@@ -18,9 +18,45 @@ const rowElements = document.querySelectorAll(".row")
 function getCellElements (currentRowElement) {
     return currentRowElement.querySelectorAll(".cell")
 }
-
-
 // YOUR CODE GOES HERE
+
+
+
+
+function resetInputs(){
+    findInput.value = '';
+    replaceInput.value = '';
+}
+function loopOverRows(){
+    for(let i = 0; i<rowElements.length;i++){
+        let currentRow = getCellElements(rowElements[i]);
+        for(let j = 0;j<currentRow.length;j++){
+            let currentCell = currentRow[j];
+            // debugger;
+            if(currentCell.innerHTML.includes(findValue)){
+                currentCell.innerHTML = currentCell.innerHTML.replace(findValue, replaceValue);
+            }
+        }
+    }
+}
+let findValue;
+let replaceValue;
+
+replaceAllButton.addEventListener('click', function(){
+        findValue = findInput.value;
+        replaceValue = replaceInput.value;
+        resetInputs();
+        loopOverRows();
+    }
+)
+
+
+
+
+
+
+
+
 
 
 // One last thing: dedicate very careful attention to using variables and
